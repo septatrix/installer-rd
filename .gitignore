@@ -1,0 +1,4 @@
+.venv
+.mkosi-*
+mkosi.cache/
+mkosi.output/
