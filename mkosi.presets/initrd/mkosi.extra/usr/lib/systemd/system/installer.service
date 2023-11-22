@@ -1,23 +1,22 @@
 [Unit]
-After=initrd.target
-Before=initrd-cleanup.service
+Description=Installer Shell
+DefaultDependencies=no
+Requires=initrd-root-fs.target
+After=initrd-root-fs.target
+
 OnSuccess=reboot.target
 OnSuccessJobMode=replace-irreversibly
 OnFailure=rescue.target
 OnFailureJobMode=replace-irreversibly
 
 [Service]
-Type=oneshot
-ExecStart=/usr/sbin/boot-maybe-install.sh
+Type=idle
+ExecStart=/usr/sbin/installer.sh
 StandardInput=tty-force
 StandardOutput=inherit
 StandardError=inherit
-TTYPath=/dev/tty1
 TTYReset=yes
 TTYVHangup=yes
 TTYVTDisallocate=yes
 IgnoreSIGPIPE=no
 SendSIGHUP=yes
-
-[Install]
-WantedBy=initrd.target

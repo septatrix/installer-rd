@@ -1,0 +1,5 @@
+[Unit]
+Description=Installer Mode
+Requires=sysinit.target installer.service
+After=sysinit.target installer.service
+AllowIsolate=yes
