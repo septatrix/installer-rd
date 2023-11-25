@@ -2,8 +2,7 @@
 
 set -eu -o pipefail
 
-dmesg --console-off
-sleep 1
+echo
 cat <<EOF
                                     ███    ███
  █████                  █             █      █
@@ -17,11 +16,11 @@ cat <<EOF
  █████  █   █  ▒███▒    ▒██  ▒██▒█    ▒██    ▒██   ███▒   █
 EOF
 
-sleep 2
 echo
 echo
 echo
 echo "Searching for hard drives ..."
+sleep .5
 
 # Exclude loop and CD-ROM devices
 block_devices="$(lsblk --noheadings --nodeps --exclude 7,11 --output NAME)"
@@ -42,8 +41,6 @@ done
 if [[ ! $available_targets ]]; then
     echo "No installation targets found. Installation aborted."
     # sleep and poweroff
-    dmesg --console-on
-    sulogin --force
     exit 1
 fi
 
@@ -58,8 +55,6 @@ while [[ ! -v install_target ]]; do
     if [[ $answer = n ]]; then
         echo "Installation manually aborted."
         # sleep and poweroff
-        dmesg --console-on
-        sulogin --force
         exit 1
     fi
     for target in $available_targets; do

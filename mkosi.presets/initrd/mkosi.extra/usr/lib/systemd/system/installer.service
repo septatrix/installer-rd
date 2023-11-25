@@ -1,6 +1,5 @@
 [Unit]
 Description=Installer Shell
-DefaultDependencies=no
 Requires=initrd-root-fs.target
 After=initrd-root-fs.target
 
@@ -17,6 +16,5 @@ StandardOutput=inherit
 StandardError=inherit
 TTYReset=yes
 TTYVHangup=yes
-TTYVTDisallocate=yes
 IgnoreSIGPIPE=no
 SendSIGHUP=yes
