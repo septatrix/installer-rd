@@ -2,3 +2,4 @@
 .mkosi-*
 mkosi.cache/
 mkosi.output/
+mkosi.local.conf
