@@ -3,13 +3,14 @@ Description=Installer Shell
 Requires=initrd-root-fs.target
 After=initrd-root-fs.target
 
+# TODO create new target which waits for removal of installation media.
 OnSuccess=reboot.target
 OnSuccessJobMode=replace-irreversibly
 OnFailure=rescue.target
 OnFailureJobMode=replace-irreversibly
 
 [Service]
-Type=idle
+Type=oneshot
 ExecStart=/usr/sbin/installer.sh
 StandardInput=tty-force
 StandardOutput=inherit
