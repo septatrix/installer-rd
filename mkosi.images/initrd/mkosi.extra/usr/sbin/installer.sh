@@ -2,6 +2,7 @@
 
 set -eu -o pipefail
 
+dmesg --console-off
 echo
 cat <<EOF
                                     ███    ███
