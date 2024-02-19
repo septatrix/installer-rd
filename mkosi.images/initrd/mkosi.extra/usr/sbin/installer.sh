@@ -67,12 +67,15 @@ while [[ ! -v install_target ]]; do
 done
 
 echo "Installing image on /dev/$install_target ..."
-echo "This might take a while..."
+echo "This can take a few minutes..."
+sleep 1
 
-cp /sysroot/image "/dev/$install_target" & progress --monitor --pid $! && wait -n
-sync
-parted --script --fix "/dev/$install_target" unit MiB print
+systemd-repart \
+    --dry-run=no \
+    --empty=force \
+    --definitions=/sysroot/definitions.d \
+    "/dev/$install_target"
 
-echo "Installation successful. Remove your installation media and then press ENTER."
+echo "Installation successful. Press ENTER to reboot and then remove your installation media."
 read -r
 echo "Rebooting..."

@@ -3,3 +3,5 @@
 mkosi.cache/
 mkosi.output/
 mkosi.local.conf
+mkosi.images/system/mkosi.extra/image
+mkosi.images/system/mkosi.extra/partitions.d
